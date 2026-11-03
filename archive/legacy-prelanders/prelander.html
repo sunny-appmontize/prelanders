@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Check Your Auto Insurance Eligibility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #000;
+      padding: 16px 0;
+      text-align: center;
+    }
+    .header img {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .header-placeholder {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .hero h1 .accent { color: #007aff; }
+    .hero .sub {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    .hero .sub .accent { color: #007aff; }
+
+    /* ── ZIP Input ── */
+    .zip-group {
+      position: relative;
+      max-width: 520px;
+      margin: 28px auto 0;
+    }
+    .zip-group .icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .zip-group input {
+      width: 100%;
+      height: 56px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 0 48px 0 48px;
+      font-size: 16px;
+      font-family: inherit;
+      font-weight: 300;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .zip-group input::placeholder { color: #9ca3af; }
+    .zip-group input:focus {
+      border-color: #007aff;
+      box-shadow: 0 0 0 3px rgba(0,122,255,.15);
+    }
+
+    /* ── CTA Button ── */
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 520px;
+      margin: 16px auto 0;
+      padding: 16px 24px;
+      background: #0080ff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      animation: jitter 2.5s ease-in-out infinite;
+      transition: background .2s;
+    }
+    .cta:hover { background: #006cdb; }
+    @keyframes jitter {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-3px); }
+      30% { transform: translateX(3px); }
+      45% { transform: translateX(-2px); }
+      60% { transform: translateX(2px); }
+      75% { transform: translateX(0); }
+    }
+
+    .trust-line {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: #007aff;
+      margin-top: 12px;
+    }
+
+    /* ── Logo Carousel ── */
+    .carousel-wrap {
+      overflow: hidden;
+      margin-top: 28px;
+      padding: 8px 0;
+      -webkit-mask-image: linear-gradient(90deg, transparent 3%, #000 18%, #000 82%, transparent 97%);
+      mask-image: linear-gradient(90deg, transparent 3%, #000 18%, #000 82%, transparent 97%);
+    }
+    .carousel-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: slide 22s linear infinite;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carousel-track .logo-item {
+      flex: 0 0 150px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      opacity: .55;
+    }
+    .carousel-track .logo-item img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .carousel-track .logo-item span {
+      font-size: 13px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    /* ── Benefits ── */
+    .section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 48px;
+      letter-spacing: -0.01em;
+    }
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 32px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 600px) {
+      .benefits { grid-template-columns: 1fr 1fr; }
+    }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .benefit .emoji {
+      font-size: 30px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .benefit p { font-size: 14px; line-height: 1.65; color: #374151; }
+    .benefit strong { display: block; font-size: 15px; color: #1a1a1a; margin-bottom: 4px; }
+
+    /* ── Loyalty ── */
+    .loyalty-title {
+      font-size: clamp(22px, 4.5vw, 36px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 56px;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .loyalty-text {
+      text-align: center;
+      max-width: 540px;
+      margin: 16px auto 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #4b5563;
+    }
+
+    /* ── FAQ ── */
+    .faq-title {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 60px;
+      letter-spacing: -0.01em;
+    }
+    .faq-list {
+      max-width: 640px;
+      margin: 28px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-item {
+      background: #f5f5f5;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.35;
+    }
+    .faq-q svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      transition: transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .faq-item.open .faq-q svg { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.16,1,.3,1), opacity .3s, padding .3s;
+      opacity: 0;
+      padding: 0 20px;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      opacity: 1;
+      padding: 0 20px 16px;
+    }
+    .faq-a p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #5c5c5c;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 24px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #b0b0b0;
+    }
+    .disclaimer strong { color: #a0a0a0; }
+    .footer-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(0,0,0,.4);
+    }
+
+    /* ── Progress Bar ── */
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(0,128,255,.15);
+      z-index: 50;
+    }
+    .progress-bar .fill {
+      height: 100%;
+      width: 50%;
+      background: #0080ff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta { animation: none; }
+      .carousel-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <!-- Replace src with your logo -->
+    <span class="header-placeholder">YourBrand</span>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Check Your Eligibility For A <span class="accent">Lower Auto Insurance Rate</span></h1>
+    <p class="sub">Enter your <span class="accent">ZIP code</span> to find competitive options for your profile.</p>
+
+    <div class="zip-group">
+      <span class="icon">📫</span>
+      <input type="text" inputmode="numeric" maxlength="5" placeholder="Your zip code" id="zipInput" />
+    </div>
+
+    <a href="#" class="cta" id="ctaTop">CHECK ELIGIBILITY ➤</a>
+    <p class="trust-line">🔒 100% Free &amp; Secure. No SSN Required.</p>
+  </section>
+
+  <!-- Logo Carousel -->
+  <div class="carousel-wrap">
+    <div class="carousel-track">
+      <!-- First set -->
+      <div class="logo-item"><span>Allstate</span></div>
+      <div class="logo-item"><span>GEICO</span></div>
+      <div class="logo-item"><span>Progressive</span></div>
+      <div class="logo-item"><span>State Farm</span></div>
+      <div class="logo-item"><span>Liberty Mutual</span></div>
+      <div class="logo-item"><span>Nationwide</span></div>
+      <!-- Duplicate for loop -->
+      <div class="logo-item"><span>Allstate</span></div>
+      <div class="logo-item"><span>GEICO</span></div>
+      <div class="logo-item"><span>Progressive</span></div>
+      <div class="logo-item"><span>State Farm</span></div>
+      <div class="logo-item"><span>Liberty Mutual</span></div>
+      <div class="logo-item"><span>Nationwide</span></div>
+    </div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="section">
+    <p class="section-title">Why Drivers Are Switching Today</p>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="emoji">⚖️</span>
+        <p><strong>Competitive Pricing</strong>Insurers compete for your business, helping you find the best possible rate for your profile.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">⚡</span>
+        <p><strong>Smart Technology</strong>Skip the manual searching. Our system connects you with the right carriers in minutes.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">🔒</span>
+        <p><strong>Unlock Discounts</strong>We match you with providers that reward safe driving, homeownership, and clean records.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">🛡️</span>
+        <p><strong>Bank-Level Security</strong>Your data is encrypted and protected. We prioritize your privacy at every step.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loyalty -->
+  <div class="section">
+    <p class="loyalty-title">Don't Let Loyalty Cost You</p>
+    <p class="loyalty-text">Staying with the same carrier for years often means missing out on new rate adjustments. It takes minutes to check the current market.</p>
+    <a href="#" class="cta" style="margin-top:16px;">CHECK ELIGIBILITY ➤</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <p class="faq-title">Frequently Asked Questions</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Is this service really free?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>Yes, there is absolutely no cost to use our service to search for insurance providers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Will checking affect my credit score?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>No. Submitting this form to check your eligibility does not impact your credit score.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          What happens after I submit?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>We will match your profile with insurance carriers or agents who can provide you with specific coverage details and pricing.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Why do you need my ZIP code?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>Insurance rates are regulated by state and determined by location. Your ZIP code is required to find providers in your area.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="disclaimer">
+      <strong>Disclaimer</strong><br />
+      Benefits Prime is a referral service and not an insurance carrier or government agency. We do not issue insurance contracts or bind coverage. Insurance product features, availability, and rates may vary by state and by individual circumstances. This website serves as an invitation for you to inquire about insurance and connects you with licensed insurance agents or carriers who can provide you with quotes. Submitting information on this site is not a commitment to purchase or guarantee of coverage. This is a free, no-obligation consultation.
+    </p>
+    <a href="#" class="footer-link">Privacy policy</a>
+  </footer>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar"><div class="fill"></div></div>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        // Toggle current
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ZIP input — digits only
+    const zipInput = document.getElementById('zipInput');
+    zipInput.addEventListener('input', () => {
+      zipInput.value = zipInput.value.replace(/\D/g, '').slice(0, 5);
+    });
+  </script>
+</body>
+</html>

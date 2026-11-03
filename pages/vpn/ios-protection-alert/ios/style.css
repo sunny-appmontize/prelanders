@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Overlay always visible */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Alert Box */
+.alert-box {
+  width: 270px;
+  background: #f2f2f7;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.alert-content {
+  padding: 20px 16px 16px;
+  text-align: center;
+}
+
+.alert-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.alert-message {
+  font-size: 13px;
+  color: #3c3c43;
+  margin: 0;
+  line-height: 18px;
+  opacity: 0.6;
+}
+
+.alert-time {
+  display: block;
+  font-size: 11px;
+  color: #8e8e93;
+  margin-top: 6px;
+}
+
+/* Buttons */
+.alert-buttons {
+  display: flex;
+  border-top: 1px solid #c6c6c8;
+}
+
+.alert-btn {
+  flex: 1;
+  padding: 11px 0;
+  font-size: 17px;
+  color: #007aff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.alert-btn:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.alert-btn:active {
+  background: rgba(0, 122, 255, 0.15);
+}
+
+.alert-btn-bold {
+  font-weight: 600;
+}
+
+.btn-divider {
+  width: 1px;
+  background: #c6c6c8;
+}

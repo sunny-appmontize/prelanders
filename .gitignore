@@ -1,0 +1,26 @@
+# Local credentials and agent configuration
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+*.pem
+*.key
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# Dependencies, logs, and temporary build/test output
+node_modules/
+__pycache__/
+*.pyc
+*.log
+coverage/
+playwright-report/
+test-results/

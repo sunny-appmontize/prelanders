@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SaveOnInsurance – Check Your Auto Insurance Eligibility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #000;
+      padding: 16px 0;
+      text-align: center;
+    }
+    .header img {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .header-placeholder {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .hero h1 .accent { color: #007aff; }
+    .hero .sub {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    .hero .sub .accent { color: #007aff; }
+
+    /* ── ZIP Input ── */
+    .zip-group {
+      position: relative;
+      max-width: 520px;
+      margin: 28px auto 0;
+    }
+    .zip-group .icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .zip-group input {
+      width: 100%;
+      height: 56px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 0 48px 0 48px;
+      font-size: 16px;
+      font-family: inherit;
+      font-weight: 300;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .zip-group input::placeholder { color: #9ca3af; }
+    .zip-group input:focus {
+      border-color: #007aff;
+      box-shadow: 0 0 0 3px rgba(0,122,255,.15);
+    }
+
+    /* ── CTA Button ── */
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 520px;
+      margin: 16px auto 0;
+      padding: 16px 24px;
+      background: #0080ff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      animation: jitter 2.5s ease-in-out infinite;
+      transition: background .2s;
+    }
+    .cta:hover { background: #006cdb; }
+    @keyframes jitter {
+      0%, 100% { transform: translateX(0); }
+      15% { transform: translateX(-3px); }
+      30% { transform: translateX(3px); }
+      45% { transform: translateX(-2px); }
+      60% { transform: translateX(2px); }
+      75% { transform: translateX(0); }
+    }
+
+    .trust-line {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: #007aff;
+      margin-top: 12px;
+    }
+
+
+    /* ── Benefits ── */
+    .section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 48px;
+      letter-spacing: -0.01em;
+    }
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 32px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 600px) {
+      .benefits { grid-template-columns: 1fr 1fr; }
+    }
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .benefit .emoji {
+      font-size: 30px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .benefit p { font-size: 14px; line-height: 1.65; color: #374151; }
+    .benefit strong { display: block; font-size: 15px; color: #1a1a1a; margin-bottom: 4px; }
+
+    /* ── Loyalty ── */
+    .loyalty-title {
+      font-size: clamp(22px, 4.5vw, 36px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 56px;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .loyalty-text {
+      text-align: center;
+      max-width: 540px;
+      margin: 16px auto 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #4b5563;
+    }
+
+    /* ── FAQ ── */
+    .faq-title {
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 800;
+      text-align: center;
+      margin-top: 60px;
+      letter-spacing: -0.01em;
+    }
+    .faq-list {
+      max-width: 640px;
+      margin: 28px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-item {
+      background: #f5f5f5;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 20px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.35;
+    }
+    .faq-q svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      transition: transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .faq-item.open .faq-q svg { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.16,1,.3,1), opacity .3s, padding .3s;
+      opacity: 0;
+      padding: 0 20px;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      opacity: 1;
+      padding: 0 20px 16px;
+    }
+    .faq-a p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #5c5c5c;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 24px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #b0b0b0;
+    }
+    .disclaimer strong { color: #a0a0a0; }
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      margin-top: 20px;
+    }
+    .footer-nav a {
+      font-size: 12px;
+      color: #007aff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .copyright {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(0,0,0,.4);
+      margin-top: 12px;
+    }
+
+    /* ── Progress Bar ── */
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(0,128,255,.15);
+      z-index: 50;
+    }
+    .progress-bar .fill {
+      height: 100%;
+      width: 50%;
+      background: #0080ff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta { animation: none; }
+    }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js",
+    );
+    // init fires below in body after params are read
+  </script>
+  <!-- End Meta Pixel Code -->
+  <!-- TikTok Pixel Code -->
+  <script>
+    !(function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = (w[t] = w[t] || []);
+      ttq.methods = ["page","track","identify","instances","debug","on","off",
+        "once","ready","alias","group","enableCookie","disableCookie",
+        "holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer = function (obj, method) {
+        obj[method] = function () {
+          obj.push([method].concat(Array.prototype.slice.call(arguments, 0)));
+        };
+      };
+      for (var i = 0; i < ttq.methods.length; i++)
+        ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function (id) {
+        var inst = ttq._i[id] || [];
+        for (var n = 0; n < ttq.methods.length; n++)
+          ttq.setAndDefer(inst, ttq.methods[n]);
+        return inst;
+      };
+      ttq.load = function (id, opts) {
+        var url = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        var opt = opts || {};
+        opt.partner = ttq._partner;
+        ttq._i = ttq._i || {};
+        ttq._i[id] = [];
+        ttq._i[id]._u = url;
+        ttq._t = ttq._t || {};
+        ttq._t[id] = +new Date();
+        ttq._o = ttq._o || {};
+        ttq._o[id] = opt;
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = !0;
+        s.src = url + "?sdkid=" + id + "&lib=" + t;
+        var f = d.getElementsByTagName("script")[0];
+        f.parentNode.insertBefore(s, f);
+      };
+      // load() + page() fire below in body, after params are read
+    })(window, document, "ttq");
+  </script>
+  <!-- End TikTok Pixel Code -->
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <span class="header-placeholder">SaveOnInsurance</span>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Check Your Eligibility For A <span class="accent">Lower Auto Insurance Rate</span></h1>
+    <p class="sub">Enter your <span class="accent">ZIP code</span> to find competitive options for your profile.</p>
+
+    <div class="zip-group">
+      <span class="icon">📫</span>
+      <input type="text" inputmode="numeric" maxlength="5" placeholder="Your zip code" id="zipInput" />
+    </div>
+
+    <a href="https://paychat.fuse-ad.com/tl?a=1651&amp;o=6456" class="cta dynamic_link" id="ctaTop">CHECK ELIGIBILITY ➤</a>
+    <p class="trust-line">🔒 100% Free &amp; Secure. No SSN Required.</p>
+  </section>
+
+
+  <!-- Benefits -->
+  <div class="section">
+    <p class="section-title">Why Drivers Are Switching Today</p>
+    <div class="benefits">
+      <div class="benefit">
+        <span class="emoji">⚖️</span>
+        <p><strong>Competitive Pricing</strong>Insurers compete for your business, helping you find the best possible rate for your profile.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">⚡</span>
+        <p><strong>Smart Technology</strong>Skip the manual searching. Our system connects you with the right carriers in minutes.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">🔒</span>
+        <p><strong>Unlock Discounts</strong>We match you with providers that reward safe driving, homeownership, and clean records.</p>
+      </div>
+      <div class="benefit">
+        <span class="emoji">🛡️</span>
+        <p><strong>Bank-Level Security</strong>Your data is encrypted and protected. We prioritize your privacy at every step.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loyalty -->
+  <div class="section">
+    <p class="loyalty-title">Don't Let Loyalty Cost You</p>
+    <p class="loyalty-text">Staying with the same carrier for years often means missing out on new rate adjustments. It takes minutes to check the current market.</p>
+    <a href="https://paychat.fuse-ad.com/tl?a=1651&amp;o=6456" class="cta dynamic_link" style="margin-top:16px;">CHECK ELIGIBILITY ➤</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <p class="faq-title">Frequently Asked Questions</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Is this service really free?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>Yes, there is absolutely no cost to use our service to search for insurance providers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Will checking affect my credit score?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>No. Submitting this form to check your eligibility does not impact your credit score.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          What happens after I submit?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>We will match your profile with insurance carriers or agents who can provide you with specific coverage details and pricing.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Why do you need my ZIP code?
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#2A2A2A"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </button>
+        <div class="faq-a"><p>Insurance rates are regulated by state and determined by location. Your ZIP code is required to find providers in your area.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="disclaimer">
+      <strong>Disclaimer</strong><br />
+      SaveOnInsurance LLC is a referral service and not an insurance carrier or government agency. We do not issue insurance contracts or bind coverage. Insurance product features, availability, and rates may vary by state and by individual circumstances. This website serves as an invitation for you to inquire about insurance and connects you with licensed insurance agents or carriers who can provide you with quotes. Submitting information on this site is not a commitment to purchase or guarantee of coverage. This is a free, no-obligation consultation.
+    </p>
+    <nav class="footer-nav">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </nav>
+    <p class="copyright">&copy; 2026 SaveOnInsurance LLC. All rights reserved.</p>
+  </footer>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar"><div class="fill"></div></div>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        // Toggle current
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ZIP input — digits only
+    const zipInput = document.getElementById('zipInput');
+    zipInput.addEventListener('input', () => {
+      zipInput.value = zipInput.value.replace(/\D/g, '').slice(0, 5);
+    });
+  </script>
+
+  <!-- ✅ CLEAN FUSECLICK MAPPING — uses native fields + tight sub slots -->
+  <script>
+    (function () {
+      // ── BLOCK LOCALHOST — no real events during dev testing ────────
+      var isLocal =
+        ["localhost", "127.0.0.1", ""].indexOf(window.location.hostname) !== -1;
+
+      // ── 0. HELPER — drop any unfired macro like "{fbclid}" ─────────
+      function val(x) {
+        return x && !/^\{.*\}$/.test(x) ? x : null;
+      }
+
+      // ── 1. READ ALL URL PARAMS ─────────────────────────────────────
+      var p = new URLSearchParams(window.location.search);
+      var realFbclid  = val(p.get("fbclid"));        // Meta click id
+      var realTtclid  = val(p.get("ttclid"));        // TikTok click id
+      var affClick    = val(p.get("aff_click_id"));  // pre-resolved by a tracker
+      var utmSource   = val(p.get("utm_source"));
+      var utmCampaign = val(p.get("utm_campaign"));
+      var utmTerm     = val(p.get("utm_term"));
+      var utmContent  = val(p.get("utm_content"));
+      var adId        = val(p.get("ad_id"));
+      var adsetId     = val(p.get("adset_id"));
+      var cmpId       = val(p.get("cmp_id"));
+      var placement   = val(p.get("placement"));
+
+      // ── 2. RESOLVE CHANNEL, CLICK ID & SOURCE ──────────────────────
+      // Which platform did this visitor actually arrive from? The click id
+      // in the URL is the only trustworthy signal — utm_source can be typed
+      // by anyone, so it is a fallback, never an override.
+      var channel =
+        realTtclid ? "tiktok" :
+        realFbclid ? "fb"     :
+        (utmSource === "tiktok" || utmSource === "tt") ? "tiktok" :
+        (utmSource === "fb" || utmSource === "facebook" || utmSource === "meta") ? "fb" :
+        null;   // organic / direct / unknown — fire nothing, claim nothing
+
+      // aff_click_id wins when present (an upstream tracker already resolved it)
+      var finalClickId = affClick || realTtclid || realFbclid || null;
+
+      // Source reported to FuseClick. An organic visit sends NO source,
+      // so we never invent a channel we cannot prove.
+      var finalSc = utmSource || channel;
+
+      var isMeta   = channel === "fb";
+      var isTikTok = channel === "tiktok";
+
+      // ── 3. BUILD CHANNEL COOKIES / CLICK CONTEXT ───────────────────
+      var landTs  = Date.now();
+      var landSec = Math.floor(landTs / 1000);
+
+      // Meta: fbc = fb.1.{landTimestampMs}.{fbclid}
+      var fbc = isMeta && finalClickId
+        ? "fb.1." + landTs + "." + finalClickId
+        : null;
+
+      // ── 4. READ PLATFORM COOKIES ───────────────────────────────────
+      var fbpMatch = document.cookie.match(/(^|;\s*)_fbp=([^;]+)/);
+      var fbp      = fbpMatch ? fbpMatch[2] : null;
+
+      // TikTok drops _ttp (its browser id, the ttclid/fbp equivalent)
+      var ttpMatch = document.cookie.match(/(^|;\s*)_ttp=([^;]+)/);
+      var ttp      = ttpMatch ? ttpMatch[2] : null;
+
+      // ── 5. PIXEL INIT — after params so click context is available ─
+      // Only the arriving channel's pixel fires. Firing both would report
+      // one visit as two, and would attribute TikTok traffic to Meta.
+      var pvEventId =
+        "pv_" +
+        landSec +
+        "_" +
+        (finalClickId
+          ? finalClickId.substring(0, 12)
+          : Math.random().toString(36).substring(2, 8));
+
+      if (!isLocal && isMeta && typeof fbq === "function") {
+        var initObj = {};
+        if (fbc) initObj.fbc = fbc;
+        if (fbp) initObj.fbp = fbp;
+
+        fbq("init", "2532262490501051", initObj);
+        fbq("track", "PageView", {}, { eventID: pvEventId });
+      }
+
+      if (!isLocal && isTikTok && typeof ttq === "object" && ttq.load) {
+        ttq.load("DADULRRC77UDHLL3HTHG");
+        ttq.page({ event_id: pvEventId });
+      }
+
+      // ── 6. SESSION EVENT ID — stable per visit, used for dedup ─────
+      // Clean format: "btn_<fbclid20>_<ts>" with click, "btn_<ts>" without.
+      var sessionEid = sessionStorage.getItem("_soi_eid");
+      if (!sessionEid) {
+        sessionEid =
+          "btn_" +
+          (finalClickId ? finalClickId.substring(0, 20) + "_" : "") +
+          landTs;
+        sessionStorage.setItem("_soi_eid", sessionEid);
+      }
+
+      // ── 7. STORE FULL VISIT CONTEXT for morning CAPI upload ────────
+      sessionStorage.setItem(
+        "_soi_visit",
+        JSON.stringify({
+          event_id:     sessionEid,
+          fbc:          fbc,
+          fbp:          fbp,
+          fbclid:       finalClickId,
+          land_ts_ms:   landTs,
+          land_ts_sec:  landSec,
+          utm_campaign: utmCampaign,
+          utm_term:     utmTerm,
+          utm_content:  utmContent,
+          utm_source:   utmSource,
+          ad_id:        adId,
+          adset_id:     adsetId,
+          cmp_id:       cmpId,
+          placement:    placement,
+          sc:           finalSc,
+          channel:      channel,
+          ttclid:       realTtclid,
+          ttp:          ttp,
+        }),
+      );
+
+      // ── 8. BUILD FINAL FUSECLICK URL ───────────────────────────────
+      var qs = new URLSearchParams();
+      qs.set("a", "1651");
+      qs.set("o", "6456");
+
+      function put(key, v) {
+        if (v !== null && v !== undefined && v !== "") qs.set(key, v);
+      }
+
+      // Native FuseClick fields
+      put("aff_click_id", finalClickId);
+      put("sub_affid",    placement);
+      put("sc",           finalSc);
+
+      // Human-readable names (s1–s3)
+      put("s1", utmCampaign);   // campaign NAME
+      put("s2", utmTerm);       // adset NAME
+      put("s3", utmContent);    // creative NAME
+
+      // CAPI reconciliation data (s4–s7)
+      // s5/s6 are channel-relative: Meta sends fbc/fbp, TikTok sends
+      // ttclid/_ttp. s11 says which channel, so the postback is never
+      // ambiguous about how to read them.
+      put("s4", sessionEid);                        // dedup id
+      put("s5", isTikTok ? realTtclid : fbc);       // click cookie  (ttclid | fbc)
+      put("s6", isTikTok ? ttp        : fbp);       // browser cookie (_ttp | _fbp)
+      put("s7", landSec);                           // land timestamp (unix sec)
+
+      // Machine-readable IDs (s8–s10) — stable, won't break on rename
+      put("s8",  adId);         // ad ID
+      put("s9",  adsetId);      // adset ID
+      put("s10", cmpId);        // campaign ID
+      put("s11", channel);      // traffic source: "fb" | "tiktok" | (empty)
+
+      var finalCTA = "https://paychat.fuse-ad.com/tl?" + qs.toString();
+
+      // ── 9. ATTACH TO ALL CTA LINKS ─────────────────────────────────
+      document.querySelectorAll(".dynamic_link").forEach(function (link) {
+        link.href = finalCTA;
+
+        link.addEventListener("click", function (e) {
+          // Stop the browser from navigating immediately —
+          // we need the pixel beacon to flush first.
+          e.preventDefault();
+
+          // Browser pixel Lead on the arriving channel only.
+          // eventID / event_id dedups against a later CAPI upload.
+          if (!isLocal && isMeta && typeof fbq === "function") {
+            fbq(
+              "track",
+              "Lead",
+              { value: 0.0, currency: "USD", predicted_ltv: 0.0 },
+              { eventID: sessionEid },
+            );
+          }
+
+          if (!isLocal && isTikTok && typeof ttq === "object" && ttq.track) {
+            ttq.track(
+              "SubmitForm",
+              { value: 0.0, currency: "USD" },
+              { event_id: sessionEid },
+            );
+          }
+
+          // Give the pixel ~250ms to flush, THEN navigate
+          setTimeout(function () {
+            window.location.href = finalCTA;
+          }, 250);
+        });
+      });
+    })();
+  </script>
+
+  <!-- noscript pixel fallback — real domain only.
+       Meta only: TikTok has no documented noscript endpoint. -->
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display: none"
+      src="https://www.facebook.com/tr?id=2532262490501051&ev=PageView&noscript=1"
+    />
+  </noscript>
+</body>
+</html>

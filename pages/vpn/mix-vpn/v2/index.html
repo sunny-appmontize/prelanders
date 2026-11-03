@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Mix VPN — One Tap to Total Privacy</title>
+    <meta
+      name="description"
+      content="Mix VPN encrypts your connection, hides your IP and keeps zero logs. 150+ servers worldwide, kill-switch, high-speed streaming. Try free for 3 days on iOS."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --blue-deep: #0747c9;
+        --blue: #0b63f6;
+        --blue-bright: #0a5be0;
+        --sky: #4da3ff;
+        --blue-soft: #f2f7ff;
+        --blue-tint: #e5f0ff;
+        --ink: #0a1b3d;
+        --ink-2: #1e2f52;
+        --muted: #5a6b8c;
+        --line: #e4ecf9;
+        --bg: #fafbfe;
+        --green: #16c784;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ── TOP NAV ── */
+      .topbar {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+      }
+      .logo-text {
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── HERO CARD ── */
+      .hero-wrap {
+        padding: 8px 16px 0;
+      }
+      .hero {
+        max-width: 960px;
+        margin: 0 auto;
+        background: linear-gradient(160deg, #0b63f6 0%, #0747c9 100%);
+        border-radius: 28px;
+        padding: 44px 28px 0;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.14) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      .tag::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 8px var(--green);
+      }
+      .hero h1 {
+        font-size: clamp(30px, 7vw, 44px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        margin-bottom: 14px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        background: linear-gradient(120deg, #7fd0ff, #bfe0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero p {
+        font-size: 16px;
+        opacity: 0.88;
+        line-height: 1.6;
+        margin-bottom: 28px;
+        max-width: 360px;
+      }
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: var(--blue-deep);
+        font-size: 16px;
+        font-weight: 700;
+        padding: 15px 26px;
+        border-radius: 14px;
+        transition: transform 0.15s;
+      }
+      .hero-cta:active {
+        transform: scale(0.98);
+      }
+      .hero-cta svg {
+        width: 20px;
+        height: 20px;
+      }
+      .hero-note {
+        font-size: 13px;
+        opacity: 0.72;
+        margin-top: 12px;
+        margin-bottom: 36px;
+      }
+      .hero-phone {
+        width: 220px;
+        margin: 0 auto -1px;
+        border-radius: 22px 22px 0 0;
+        filter: drop-shadow(0 20px 40px rgba(4, 32, 90, 0.4));
+      }
+
+      /* ── DUAL POWER CARDS ── */
+      .dual {
+        max-width: 960px;
+        margin: 56px auto 0;
+        padding: 0 16px;
+      }
+      .dual-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .dual-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        box-shadow: 0 14px 34px -22px rgba(10, 27, 61, 0.22);
+      }
+      .dual-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(--blue-tint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .dual-icon svg {
+        width: 24px;
+        height: 24px;
+        color: var(--blue);
+      }
+      .dual-card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 4px;
+      }
+      .dual-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ── SECTION HEADERS ── */
+      .section {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 64px 20px 0;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--blue);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .section-h {
+        font-size: clamp(24px, 5vw, 34px);
+        font-weight: 800;
+        letter-spacing: -0.022em;
+        line-height: 1.15;
+        margin-bottom: 32px;
+      }
+
+      /* ── FEATURE LIST ── */
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .feature {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .feature:last-child {
+        border-bottom: none;
+      }
+      .feat-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--blue);
+        flex-shrink: 0;
+        width: 24px;
+        letter-spacing: 0.04em;
+      }
+      .feature h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+      .feature p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      /* ── PHONE SHOWCASE ── */
+      .showcase {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 64px 20px 0;
+      }
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 24px;
+      }
+      .shot-card {
+        background: var(--blue-tint);
+        border-radius: 22px;
+        padding: 28px 20px 0;
+        overflow: hidden;
+        text-align: center;
+      }
+      .shot-card-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--blue);
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .shot-card-title {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+      .shot-card img {
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        border-radius: 18px 18px 0 0;
+        box-shadow: 0 12px 30px rgba(7, 71, 201, 0.2);
+      }
+
+      /* ── REVIEWS ── */
+      .reviews-strip {
+        max-width: 960px;
+        margin: 64px auto 0;
+        padding: 0 20px;
+      }
+      .review {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px;
+        margin-bottom: 12px;
+      }
+      .stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 10px;
+      }
+      .stars svg {
+        width: 14px;
+        height: 14px;
+        fill: #f5b400;
+      }
+      .review p {
+        font-size: 14px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+      .review-author {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .review-author span {
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      /* ── FINAL CTA ── */
+      .final {
+        max-width: 960px;
+        margin: 64px auto 0;
+        padding: 0 16px 40px;
+      }
+      .final-card {
+        background: linear-gradient(160deg, #0b63f6 0%, #0747c9 100%);
+        border-radius: 28px;
+        padding: 48px 28px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .final-card::before {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(77, 163, 255, 0.28) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .final-card > * {
+        position: relative;
+      }
+      .final-card h2 {
+        font-size: clamp(24px, 6vw, 32px);
+        font-weight: 800;
+        letter-spacing: -0.022em;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .final-card p {
+        font-size: 15px;
+        opacity: 0.88;
+        margin-bottom: 26px;
+        line-height: 1.55;
+      }
+
+      /* ── SUBSCRIPTION / LEGAL ── */
+      .legal {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px 0;
+      }
+      .legal p {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.65;
+        margin-bottom: 10px;
+      }
+      .legal a {
+        color: var(--blue);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      /* ── FOOTER ── */
+      .foot {
+        text-align: center;
+        padding: 28px 20px 40px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .foot a {
+        color: var(--muted);
+        text-decoration: underline;
+        margin: 0 6px;
+      }
+      .foot p:first-child {
+        margin-bottom: 10px;
+      }
+
+      /* ── DESKTOP ── */
+      @media (min-width: 768px) {
+        .hero {
+          padding: 64px 56px 0;
+          display: flex;
+          gap: 40px;
+          align-items: center;
+        }
+        .hero-left {
+          flex: 1;
+        }
+        .hero-phone {
+          width: 240px;
+        }
+        .hero p {
+          font-size: 17px;
+        }
+        .dual-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .features {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0 48px;
+        }
+        .feature {
+          padding: 24px 0;
+        }
+        .showcase-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP -->
+    <div class="topbar">
+      <img src="images/app-icon.webp" alt="Mix VPN" class="logo-img" />
+      <span class="logo-text">Mix VPN</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-wrap">
+      <div class="hero">
+        <div class="hero-left">
+          <div class="tag">Free 3-day trial · iOS</div>
+          <h1>Total privacy in <em>one tap</em>.</h1>
+          <p>
+            Mix VPN encrypts your connection, hides your IP and keeps strictly
+            zero logs — with 150+ high-speed servers worldwide. No account, no
+            registration.
+          </p>
+          <a
+            href="http://paychat.fuse-cloud.com/tl?a=356&o=6410&aff_click_id={AFF_CLICK_ID}&sub_affid=2_mix{SUB_AFFID}&device_id={DEVICE_ID}"
+            class="hero-cta"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Start Free 3-Day Trial
+          </a>
+          <p class="hero-note">No registration · Zero logs · Cancel anytime</p>
+        </div>
+        <img
+          src="images/screen-1.webp"
+          alt="Mix VPN connected screen"
+          class="hero-phone"
+        />
+      </div>
+    </div>
+
+    <!-- DUAL POWER CARDS -->
+    <div class="dual">
+      <div class="dual-grid">
+        <div class="dual-card">
+          <div class="dual-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div>
+            <h3>Bank-grade encryption</h3>
+            <p>Every byte is secured with military-grade IKEv2 encryption.</p>
+          </div>
+        </div>
+        <div class="dual-card">
+          <div class="dual-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+            </svg>
+          </div>
+          <div>
+            <h3>150+ global servers</h3>
+            <p>Connect across 10+ countries with AI-picked fastest routing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES NUMBERED LIST -->
+    <div class="section">
+      <p class="eyebrow">What's inside</p>
+      <h2 class="section-h">Everything you need.<br />Nothing you don't.</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feat-num">01</div>
+          <div>
+            <h4>High-speed servers worldwide</h4>
+            <p>
+              Fast, stable servers across 10+ countries — stream and browse
+              with zero lag.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">02</div>
+          <div>
+            <h4>Strong data encryption</h4>
+            <p>
+              Your activity is fully encrypted and shielded from hackers and
+              trackers.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">03</div>
+          <div>
+            <h4>Strict no-logs policy</h4>
+            <p>Your history and personal data are never recorded or sold. Ever.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">04</div>
+          <div>
+            <h4>Automatic kill-switch</h4>
+            <p>
+              If the tunnel ever drops, traffic halts instantly — no leaks, no
+              exposure.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">05</div>
+          <div>
+            <h4>One-tap connect</h4>
+            <p>No setup. Open the app, tap once and you're protected.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">06</div>
+          <div>
+            <h4>24/7 live support</h4>
+            <p>A real person, ready to help whenever you need it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE SHOWCASE -->
+    <div class="showcase">
+      <p class="eyebrow">See the app</p>
+      <h2 class="section-h">Designed for one-tap simplicity</h2>
+      <div class="showcase-grid">
+        <div class="shot-card">
+          <div class="shot-card-label">Connect</div>
+          <div class="shot-card-title">One-tap protection</div>
+          <img src="images/screen-1.webp" alt="Connected screen" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Servers</div>
+          <div class="shot-card-title">Pick any country</div>
+          <img src="images/screen-2.webp" alt="Servers worldwide" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Privacy</div>
+          <div class="shot-card-title">No logs, ever</div>
+          <img src="images/screen-3.webp" alt="Safe and anonymous" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Speed</div>
+          <div class="shot-card-title">High bandwidth</div>
+          <img src="images/screen-4.webp" alt="Stable high speed" />
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-strip">
+      <p class="eyebrow">From the App Store</p>
+      <h2 class="section-h">Trusted by privacy-first users</h2>
+      <div class="review">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+        </div>
+        <p>
+          "Set it up in seconds — no email, no account. Speeds stayed high even
+          on a server across the world. Exactly what I wanted."
+        </p>
+        <p class="review-author">Daniel R. <span>· Verified user</span></p>
+      </div>
+      <div class="review">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+        </div>
+        <p>
+          "The kill-switch gives me real peace of mind on public Wi-Fi. Zero
+          logs and it just works. Worth every bit of the trial."
+        </p>
+        <p class="review-author">Priya M. <span>· Verified user</span></p>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="final">
+      <div class="final-card">
+        <h2>3 days free.<br />Cancel anytime.</h2>
+        <p>Weekly, monthly, or yearly plans — all unlock Mix VPN in full.</p>
+        <a
+          href="http://paychat.fuse-cloud.com/tl?a=356&o=6410&aff_click_id={AFF_CLICK_ID}&sub_affid=2_mix{SUB_AFFID}&device_id={DEVICE_ID}"
+          class="hero-cta"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Start Free Trial
+        </a>
+      </div>
+    </div>
+
+    <!-- SUBSCRIPTION DETAILS -->
+    <div class="legal">
+      <p>
+        Subscribe for full, ad-free access. Your free 3-day trial automatically
+        converts to a paid subscription unless cancelled at least 24 hours
+        before it ends. Payment is charged to your account upon confirmation of
+        purchase. Manage your subscription and turn off auto-renewal in your
+        account settings after payment. Any unused portion of a trial is
+        forfeited when you subscribe.
+      </p>
+      <p>
+        By continuing you agree to our
+        <a href="https://guavabravotechnology.com/eula.html" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+        and
+        <a href="https://guavabravotechnology.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <p>© 2026 Mix VPN. All rights reserved.</p>
+      <p>
+        <a href="https://guavabravotechnology.com/privacy.html" target="_blank" rel="noopener">Privacy</a>·
+        <a href="https://guavabravotechnology.com/eula.html" target="_blank" rel="noopener">EULA</a>
+      </p>
+    </div>
+  </body>
+</html>

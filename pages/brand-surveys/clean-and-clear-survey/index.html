@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean &amp; Clear® — Brand Survey</title>
+    <style>
+      :root {
+        --purple-deep: #1a0550;
+        --purple-mid: #3d0f8c;
+        --purple-brand: #5a1db5;
+        --purple-light: #6b23d4;
+        --purple-pale: #c97ff5;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        background: linear-gradient(
+          145deg,
+          #1a0550 0%,
+          #3d0f8c 40%,
+          #6b23d4 70%,
+          #c97ff5 100%
+        );
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+      }
+      .survey-wrap {
+        width: 100%;
+        max-width: 420px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1.5px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(37, 8, 96, 0.25);
+      }
+      .card-header {
+        padding: 24px 32px 20px;
+        border-bottom: 2px solid var(--purple-mid);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .card-header img {
+        height: 80px;
+        width: auto;
+      }
+      .logo-text {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--purple-mid);
+        letter-spacing: -0.5px;
+      }
+
+      .screen {
+        display: none;
+      }
+      .screen.active {
+        display: block;
+      }
+      .card-body {
+        padding: 28px 28px 32px;
+      }
+
+      .progress-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .progress-track {
+        flex: 1;
+        height: 4px;
+        border-radius: 99px;
+        background: rgba(61, 15, 140, 0.12);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #5a1db5, #6b23d4);
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .progress-text {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--purple-brand);
+        white-space: nowrap;
+      }
+
+      .q-text {
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--purple-deep);
+        line-height: 1.4;
+        margin-bottom: 22px;
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1.5px solid rgba(61, 15, 140, 0.14);
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          background 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .option:hover {
+        border-color: rgba(107, 35, 212, 0.35);
+        background: rgba(255, 255, 255, 0.75);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(61, 15, 140, 0.1);
+      }
+      .option:active {
+        transform: scale(0.98);
+      }
+      .option.selected {
+        border-color: var(--purple-brand);
+        background: rgba(107, 35, 212, 0.08);
+        transform: translateY(-1px);
+        box-shadow:
+          0 0 0 3px rgba(107, 35, 212, 0.1),
+          0 4px 14px rgba(61, 15, 140, 0.1);
+      }
+      .radio {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border-radius: 50%;
+        border: 2px solid rgba(107, 35, 212, 0.3);
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .option.selected .radio {
+        border-color: var(--purple-brand);
+        background: var(--purple-brand);
+      }
+      .radio-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: white;
+        opacity: 0;
+        transform: scale(0);
+        transition:
+          opacity 0.18s,
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .option.selected .radio-dot {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .option-label {
+        font-size: 15px;
+        font-weight: 500;
+        color: #1a0550;
+      }
+      .option.selected .option-label {
+        font-weight: 700;
+      }
+
+      .btn-wrap {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.35s,
+          transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+      }
+      .btn-wrap.show {
+        max-height: 80px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .btn {
+        width: 100%;
+        margin-top: 20px;
+        padding: 16px;
+        border-radius: 50px;
+        border: none;
+        background: linear-gradient(135deg, #5a1db5, #6b23d4 60%, #b06ef7);
+        color: white;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 28px rgba(107, 35, 212, 0.38);
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.2, 0.64, 1),
+          box-shadow 0.25s;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 36px rgba(107, 35, 212, 0.48);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="survey-wrap">
+      <div class="card">
+        <div class="card-header">
+          <img
+            src="Clean_Clear_logo_PNG1.png"
+            height="100"
+            width="150"
+            alt="Clean & Clear"
+          />
+        </div>
+
+        <!-- Screen 1 -->
+        <div class="screen active" id="screen-1">
+          <div class="card-body">
+            <div class="progress-wrap">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 50%"></div>
+              </div>
+              <div class="progress-text">1 of 2</div>
+            </div>
+            <div class="q-text">
+              Do you remember seeing an ad for Clean &amp; Clear recently?
+            </div>
+            <div class="options" id="options-1">
+              <div class="option" data-value="Yes" onclick="pick(this, 1)">
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Yes</div>
+              </div>
+              <div class="option" data-value="No" onclick="pick(this, 1)">
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">No</div>
+              </div>
+              <div class="option" data-value="Not sure" onclick="pick(this, 1)">
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Not sure</div>
+              </div>
+            </div>
+            <div class="btn-wrap" id="wrap-1">
+              <button class="btn" onclick="go(2)">Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 2 -->
+        <div class="screen" id="screen-2">
+          <div class="card-body">
+            <div class="progress-wrap">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <div class="progress-text">2 of 2</div>
+            </div>
+            <div class="q-text">
+              How likely are you to purchase from Clean &amp; Clear in the near
+              future?
+            </div>
+            <div class="options" id="options-2">
+              <div
+                class="option"
+                data-value="Very likely"
+                onclick="pick(this, 2)"
+              >
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Very likely</div>
+              </div>
+              <div
+                class="option"
+                data-value="Somewhat likely"
+                onclick="pick(this, 2)"
+              >
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Somewhat likely</div>
+              </div>
+              <div class="option" data-value="Neutral" onclick="pick(this, 2)">
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Neutral</div>
+              </div>
+              <div
+                class="option"
+                data-value="Somewhat unlikely"
+                onclick="pick(this, 2)"
+              >
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Somewhat unlikely</div>
+              </div>
+              <div
+                class="option"
+                data-value="Very unlikely"
+                onclick="pick(this, 2)"
+              >
+                <div class="radio"><div class="radio-dot"></div></div>
+                <div class="option-label">Very unlikely</div>
+              </div>
+            </div>
+            <div class="btn-wrap" id="wrap-2">
+              <button class="btn" onclick="submitSurvey()">Submit →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ── GAM clickTag — GAM injects this at serve time ──
+      var clickTag =
+        window.clickTag || "https://easyshopprice.com/thankyou-cnc/";
+
+      var answers = { adRecall: "", purchaseIntent: "" };
+
+      function pick(el, q) {
+        var opts = document.querySelectorAll("#options-" + q + " .option");
+        for (var i = 0; i < opts.length; i++)
+          opts[i].classList.remove("selected");
+        el.classList.add("selected");
+        if (q === 1) answers.adRecall = el.getAttribute("data-value");
+        if (q === 2) answers.purchaseIntent = el.getAttribute("data-value");
+        document.getElementById("wrap-" + q).classList.add("show");
+      }
+
+      function go(n) {
+        document.querySelector(".screen.active").classList.remove("active");
+        document.getElementById("screen-" + n).classList.add("active");
+      }
+
+      function submitSurvey() {
+        // clickTag is your thank-you page URL (set in GAM creative settings)
+        var base = clickTag.split("?")[0];
+        var params =
+          "?adRecall=" +
+          encodeURIComponent(answers.adRecall) +
+          "&purchaseIntent=" +
+          encodeURIComponent(answers.purchaseIntent) +
+          "&ts=" +
+          Date.now();
+
+        window.open(base + params, "_blank");
+      }
+    </script>
+  </body>
+</html>

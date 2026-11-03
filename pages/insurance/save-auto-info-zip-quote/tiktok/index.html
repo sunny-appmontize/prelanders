@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SaveAutoInfo – Find Lower Auto Insurance Rates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #1b2a4a;
+    }
+    .logo span { color: #2cb5c8; font-style: italic; }
+    .free-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 2px solid #2cb5c8;
+      border-radius: 28px;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2cb5c8;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .free-call:hover { background: #2cb5c8; color: #fff; }
+
+    /* ── Progress Bar ── */
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 8px;
+    }
+    .progress-badge {
+      background: #1b2a4a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .progress-track {
+      flex: 1;
+      height: 4px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 4%;
+      background: linear-gradient(90deg, #2cb5c8, #56d0df);
+      border-radius: 4px;
+      transition: width .4s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero-pin {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 14px;
+      color: #1b2a4a;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 800;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ZIP Form ── */
+    .zip-form {
+      max-width: 420px;
+      margin: 32px auto 0;
+      position: relative;
+    }
+    .zip-input-wrap {
+      position: relative;
+    }
+    .zip-input-wrap input {
+      width: 100%;
+      height: 56px;
+      border: 2px solid #e8c4c4;
+      border-radius: 6px;
+      padding: 0 16px;
+      font-size: 16px;
+      font-family: inherit;
+      color: #1a1a1a;
+      outline: none;
+      text-align: center;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .zip-input-wrap input::placeholder { color: #b0b8c4; }
+    .zip-input-wrap input:focus {
+      border-color: #2cb5c8;
+      box-shadow: 0 0 0 3px rgba(44,181,200,.15);
+    }
+    .required-label {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      color: #e04a4a;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .arrow-pointer {
+      position: absolute;
+      right: -50px;
+      top: 10px;
+      font-size: 36px;
+      color: #2a5cc7;
+      transform: rotate(10deg);
+      animation: nudge 1.5s ease-in-out infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+    @keyframes nudge {
+      0%, 100% { transform: rotate(10deg) translate(0, 0); }
+      50% { transform: rotate(10deg) translate(-6px, 4px); }
+    }
+    @media (max-width: 520px) {
+      .arrow-pointer { display: none; }
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+      margin: 18px auto 0;
+      padding: 16px 24px;
+      background: #2cb5c8;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: #24a0b2; }
+    .cta-btn svg { width: 20px; height: 20px; }
+
+    /* ── Mascot Line ── */
+    .mascot-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 600px;
+      margin: 48px auto 0;
+      padding: 0 24px;
+    }
+    .mascot-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fde68a, #f59e0b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .mascot-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: #4b5563;
+    }
+    .mascot-text .check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: #2cb5c8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mascot-text .check svg { width: 12px; height: 12px; color: #fff; }
+
+
+
+    /* ── Footer ── */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      padding: 28px 24px 12px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: #2cb5c8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer-links a:hover { color: #1b2a4a; }
+    .copyright {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      padding: 16px 24px 32px;
+      line-height: 1.6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .arrow-pointer { animation: none; }
+    }
+  </style>
+  <!-- TikTok Pixel Code -->
+  <script>
+    !(function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = (w[t] = w[t] || []);
+      ttq.methods = ["page","track","identify","instances","debug","on","off",
+        "once","ready","alias","group","enableCookie","disableCookie",
+        "holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer = function (obj, method) {
+        obj[method] = function () {
+          obj.push([method].concat(Array.prototype.slice.call(arguments, 0)));
+        };
+      };
+      for (var i = 0; i < ttq.methods.length; i++)
+        ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function (id) {
+        var inst = ttq._i[id] || [];
+        for (var n = 0; n < ttq.methods.length; n++)
+          ttq.setAndDefer(inst, ttq.methods[n]);
+        return inst;
+      };
+      ttq.load = function (id, opts) {
+        var url = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        var opt = opts || {};
+        opt.partner = ttq._partner;
+        ttq._i = ttq._i || {};
+        ttq._i[id] = [];
+        ttq._i[id]._u = url;
+        ttq._t = ttq._t || {};
+        ttq._t[id] = +new Date();
+        ttq._o = ttq._o || {};
+        ttq._o[id] = opt;
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = !0;
+        s.src = url + "?sdkid=" + id + "&lib=" + t;
+        var f = d.getElementsByTagName("script")[0];
+        f.parentNode.insertBefore(s, f);
+      };
+      // load() + page() fire below in body, after params are read
+    })(window, document, "ttq");
+  </script>
+  <!-- End TikTok Pixel Code -->
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">SaveAuto<span>Info</span></div>
+    <a href="https://paychat.fuse-ad.com/tl?a=1651&amp;o=6456" class="free-call dynamic_link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.35a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0122 16.92z"/></svg>
+      Free call
+    </a>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-badge">4%</div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <svg class="hero-pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+    <h1>Enter Your Zip Code</h1>
+
+    <div class="zip-form">
+      <div class="zip-input-wrap">
+        <input type="text" inputmode="numeric" maxlength="5" placeholder="Zip Code" id="zipInput" />
+        <span class="arrow-pointer">↙</span>
+      </div>
+      <span class="required-label">Required</span>
+
+      <a href="https://paychat.fuse-ad.com/tl?a=1651&amp;o=6456" class="cta-btn dynamic_link" id="ctaBtn">
+        GET STARTED
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Mascot -->
+  <div class="mascot-line">
+    <div class="mascot-avatar">🐶</div>
+    <p class="mascot-text">
+      <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Tell us what car you drive and we'll look for the best rates
+    </p>
+  </div>
+
+
+
+  <!-- Footer Links -->
+  <nav class="footer-links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+  </nav>
+
+  <p class="copyright">&copy; 2026 SaveAutoInfo LLC. All rights reserved.</p>
+
+  <script>
+    const zipInput = document.getElementById('zipInput');
+    zipInput.addEventListener('input', () => {
+      zipInput.value = zipInput.value.replace(/\D/g, '').slice(0, 5);
+    });
+  </script>
+
+  <!-- ✅ CLEAN FUSECLICK MAPPING — uses native fields + tight sub slots -->
+  <script>
+    (function () {
+      // ── BLOCK LOCALHOST — no real events during dev testing ────────
+      var isLocal =
+        ["localhost", "127.0.0.1", ""].indexOf(window.location.hostname) !== -1;
+
+      // ── 0. HELPER — drop any unfired macro like "{ttclid}" ────────
+      function val(x) {
+        return x && !/^\{.*\}$/.test(x) ? x : null;
+      }
+
+      // ── 1. READ ALL URL PARAMS ─────────────────────────────────────
+      var p = new URLSearchParams(window.location.search);
+      var realTtclid  = val(p.get("ttclid"));
+      var affClick    = val(p.get("aff_click_id"));
+      var utmSource   = val(p.get("utm_source"));
+      var utmCampaign = val(p.get("utm_campaign"));
+      var utmTerm     = val(p.get("utm_term"));
+      var utmContent  = val(p.get("utm_content"));
+      var adId        = val(p.get("ad_id"));
+      var adsetId     = val(p.get("adset_id"));
+      var cmpId       = val(p.get("cmp_id"));
+      var placement   = val(p.get("placement"));
+
+      // ── 2. RESOLVE TTCLID & SOURCE ──────────────────────────────────
+      var finalClickId = affClick || realTtclid || null;
+      // Source is ONLY set for real TikTok traffic. A clean/organic
+      // visit (no ttclid, no utm_source) sends NO source — no fake "tiktok".
+      var finalSc = utmSource || (finalClickId ? "tiktok" : null);
+
+      // ── 3. TIMESTAMPS ────────────────────────────────────────────────
+      var landTs  = Date.now();
+      var landSec = Math.floor(landTs / 1000);
+
+      // ── 4. READ _ttp COOKIE (TikTok's browser id, the fbp equivalent) ─
+      var ttpMatch = document.cookie.match(/(^|;\s*)_ttp=([^;]+)/);
+      var ttp      = ttpMatch ? ttpMatch[2] : null;
+
+      // ── 5. PIXEL LOAD + PAGE EVENT — after params so ttclid/ttp are
+      //      available for identify() ─────────────────────────────────
+      var pageEventId =
+        "pv_" +
+        landSec +
+        "_" +
+        (finalClickId
+          ? finalClickId.substring(0, 12)
+          : Math.random().toString(36).substring(2, 8));
+
+      if (!isLocal && typeof ttq === "object" && ttq.load) {
+        ttq.load("DADULRRC77UDHLL3HTHG");
+
+        var identifyObj = {};
+        if (realTtclid) identifyObj.ttclid = realTtclid;
+        if (ttp)         identifyObj.ttp = ttp;
+        if (Object.keys(identifyObj).length) ttq.identify(identifyObj);
+
+        ttq.page({ event_id: pageEventId });
+      }
+
+      // ── 6. SESSION EVENT ID — stable per visit, used for dedup ─────
+      // Clean format: "btn_<ttclid20>_<ts>" with click, "btn_<ts>" without.
+      var sessionEid = sessionStorage.getItem("_sai_tt_eid");
+      if (!sessionEid) {
+        sessionEid =
+          "btn_" +
+          (finalClickId ? finalClickId.substring(0, 20) + "_" : "") +
+          landTs;
+        sessionStorage.setItem("_sai_tt_eid", sessionEid);
+      }
+
+      // ── 7. STORE FULL VISIT CONTEXT for server-side reconciliation ─
+      sessionStorage.setItem(
+        "_sai_tt_visit",
+        JSON.stringify({
+          event_id:     sessionEid,
+          ttclid:       finalClickId,
+          ttp:          ttp,
+          land_ts_ms:   landTs,
+          land_ts_sec:  landSec,
+          utm_campaign: utmCampaign,
+          utm_term:     utmTerm,
+          utm_content:  utmContent,
+          utm_source:   utmSource,
+          ad_id:        adId,
+          adset_id:     adsetId,
+          cmp_id:       cmpId,
+          placement:    placement,
+          sc:           finalSc,
+        }),
+      );
+
+      // ── 8. BUILD FINAL FUSECLICK URL ───────────────────────────────
+      // Same sub-slot layout as the Meta (main) page, so FuseClick and
+      // downstream reporting read both pages identically — s5/s6 just
+      // carry TikTok's identifiers here instead of Facebook's, and s11
+      // says which channel this visit came from.
+      var qs = new URLSearchParams();
+      qs.set("a", "1651");
+      qs.set("o", "6456");
+
+      function put(key, v) {
+        if (v !== null && v !== undefined && v !== "") qs.set(key, v);
+      }
+
+      // Native FuseClick fields
+      put("aff_click_id", finalClickId);
+      put("sub_affid",    placement);
+      put("sc",           finalSc);
+
+      // Human-readable names (s1–s3)
+      put("s1", utmCampaign);   // campaign NAME
+      put("s2", utmTerm);       // adset NAME
+      put("s3", utmContent);    // creative NAME
+
+      // TikTok reconciliation data (s4–s7)
+      put("s4", sessionEid);    // dedup id
+      put("s5", realTtclid);    // tiktok click id
+      put("s6", ttp);           // tiktok browser cookie (_ttp)
+      put("s7", landSec);       // land timestamp (unix sec)
+
+      // Machine-readable IDs (s8–s10) — stable, won't break on rename
+      put("s8",  adId);         // ad ID
+      put("s9",  adsetId);      // adset ID
+      put("s10", cmpId);        // campaign ID
+      put("s11", "tiktok");     // channel — this page only ever sends tiktok
+
+      var finalCTA = "https://paychat.fuse-ad.com/tl?" + qs.toString();
+
+      // ── 9. ATTACH TO ALL CTA LINKS ─────────────────────────────────
+      document.querySelectorAll(".dynamic_link").forEach(function (link) {
+        link.href = finalCTA;
+
+        link.addEventListener("click", function (e) {
+          // Stop the browser from navigating immediately —
+          // we need the pixel beacon to flush first.
+          e.preventDefault();
+
+          // Browser pixel Lead — event_id dedups against server-side upload
+          if (!isLocal && typeof ttq === "object" && ttq.track) {
+            ttq.track(
+              "SubmitForm",
+              { value: 0.0, currency: "USD" },
+              { event_id: sessionEid },
+            );
+          }
+
+          // Give the pixel ~250ms to flush, THEN navigate
+          setTimeout(function () {
+            window.location.href = finalCTA;
+          }, 250);
+        });
+      });
+    })();
+  </script>
+
+  <!-- No documented TikTok noscript pixel endpoint exists —
+       JS-disabled visitors on this page simply are not tracked. -->
+</body>
+</html>

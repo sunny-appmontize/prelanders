@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Velvet VPN — Privacy meets your living room</title>
+    <meta
+      name="description"
+      content="A secure VPN and a universal Smart TV remote. One app. Free 3-day trial."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #0e0822;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+
+      /* ── TOP NAV ── */
+      .topbar {
+        padding: 22px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+      }
+      .logo-text {
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── HERO — editorial big-type ── */
+      .hero {
+        padding: 32px 0 40px;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -180px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          rgba(139, 92, 246, 0.35) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .small-line {
+        font-size: 13px;
+        font-weight: 500;
+        color: #a78bfa;
+        letter-spacing: 0.04em;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .small-line::before {
+        content: "";
+        width: 24px;
+        height: 1px;
+        background: #a78bfa;
+      }
+
+      h1.hero-h {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(46px, 11vw, 84px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        margin-bottom: 24px;
+      }
+
+      h1.hero-h em {
+        font-style: italic;
+        color: #c4b5fd;
+      }
+
+      .hero-sub {
+        font-size: 17px;
+        color: #c7c0dd;
+        line-height: 1.55;
+        max-width: 440px;
+        margin-bottom: 32px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: #0e0822;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 14px 24px;
+        border-radius: 100px;
+        transition: transform 0.15s;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+      .btn svg {
+        width: 19px;
+        height: 19px;
+      }
+
+      .small-note {
+        font-size: 13px;
+        color: #7a6f9c;
+        margin-top: 14px;
+      }
+
+      /* Hero phone — floating, tilted */
+      .hero-phone-wrap {
+        margin-top: 56px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      .hero-phone-wrap::before {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(168, 85, 247, 0.4) 0%,
+          transparent 65%
+        );
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        pointer-events: none;
+      }
+
+      .hero-phone {
+        width: 260px;
+        border-radius: 28px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        position: relative;
+        transform: rotate(-3deg);
+      }
+
+      /* ── METRICS BAND ── */
+      .metrics {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 64px;
+        padding: 24px 0;
+      }
+
+      .metrics-inner {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .metric-num {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: 36px;
+        font-weight: 400;
+        color: #fff;
+        line-height: 1;
+      }
+
+      .metric-lbl {
+        font-size: 12px;
+        color: #7a6f9c;
+        margin-top: 4px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      /* ── TWO-IN-ONE SHOWCASE ── */
+      .twoin {
+        padding: 72px 0 0;
+      }
+
+      .eyebrow {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-style: italic;
+        font-size: 18px;
+        color: #c4b5fd;
+        margin-bottom: 12px;
+      }
+
+      .section-h {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(32px, 7vw, 52px);
+        font-weight: 400;
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        margin-bottom: 14px;
+      }
+
+      .section-sub {
+        font-size: 16px;
+        color: #c7c0dd;
+        line-height: 1.6;
+        max-width: 480px;
+        margin-bottom: 40px;
+      }
+
+      .duo {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .duo-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 32px 24px 0;
+        overflow: hidden;
+      }
+
+      .duo-card .pill {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        color: #c4b5fd;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border: 1px solid rgba(196, 181, 253, 0.3);
+        padding: 4px 10px;
+        border-radius: 100px;
+        margin-bottom: 18px;
+      }
+
+      .duo-card h3 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+        line-height: 1.05;
+      }
+
+      .duo-card p {
+        font-size: 14px;
+        color: #a29cb8;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .duo-card img {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+        border-radius: 22px 22px 0 0;
+      }
+
+      /* ── FEATURE GRID (text-only minimal) ── */
+      .feat-section {
+        padding: 72px 0 0;
+      }
+
+      .feat-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 8px;
+      }
+
+      .feat {
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .feat-label {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-style: italic;
+        font-size: 15px;
+        color: #c4b5fd;
+        margin-bottom: 6px;
+      }
+
+      .feat h4 {
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 6px;
+      }
+
+      .feat p {
+        font-size: 14px;
+        color: #a29cb8;
+        line-height: 1.6;
+      }
+
+      /* ── PULL QUOTE ── */
+      .quote {
+        padding: 72px 0 0;
+      }
+
+      .quote-block {
+        border-left: 2px solid #a78bfa;
+        padding-left: 20px;
+      }
+
+      .quote-block p {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(22px, 5vw, 30px);
+        font-style: italic;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        margin-bottom: 14px;
+      }
+
+      .quote-author {
+        font-size: 13px;
+        color: #a29cb8;
+      }
+
+      /* ── FINAL ── */
+      .final {
+        padding: 80px 0 32px;
+        text-align: center;
+      }
+
+      .final h2 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-size: clamp(38px, 9vw, 64px);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 18px;
+      }
+
+      .final h2 em {
+        font-style: italic;
+        color: #c4b5fd;
+      }
+
+      .final p {
+        font-size: 16px;
+        color: #c7c0dd;
+        margin-bottom: 28px;
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ── FOOTER ── */
+      .foot {
+        text-align: center;
+        padding: 40px 0 32px;
+        font-size: 12px;
+        color: #5c507d;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        margin-top: 40px;
+      }
+
+      .foot a {
+        color: #5c507d;
+        margin: 0 6px;
+      }
+      .foot a:hover {
+        color: #c4b5fd;
+      }
+      .foot p:first-child {
+        margin-bottom: 10px;
+      }
+
+      /* ── DESKTOP ── */
+      @media (min-width: 768px) {
+        .hero {
+          display: flex;
+          align-items: center;
+          gap: 60px;
+          padding: 56px 0 80px;
+        }
+        .hero-content {
+          flex: 1;
+        }
+        .hero-phone-wrap {
+          margin-top: 0;
+          flex-shrink: 0;
+        }
+        .hero-phone {
+          width: 280px;
+        }
+
+        .duo {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .feat-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0 56px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- TOP -->
+      <div class="topbar">
+        <img src="logo.webp" alt="Velvet VPN" class="logo-img" />
+        <span class="logo-text">Velvet VPN</span>
+      </div>
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-content">
+          <div class="small-line">An iOS app · Free 3-day trial</div>
+          <h1 class="hero-h">
+            Privacy.<br />Plus <em>your</em><br />TV remote.
+          </h1>
+          <p class="hero-sub">
+            Velvet VPN keeps your connection private and your TV under control —
+            all from one elegant app on your iPhone.
+          </p>
+          <a href="http://paychat.fuse-cloud.com/tl?a=356&o=6333&aff_click_id={AFF_CLICK_ID}&sub_affid=2_velvet{SUB_AFFID}&device_id={DEVICE_ID}" class="btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+              />
+            </svg>
+            Start Free Trial
+          </a>
+          <p class="small-note">3 days free · then $9.99/mo · cancel anytime</p>
+        </div>
+        <div class="hero-phone-wrap">
+          <img src="300x650bb.webp" alt="Velvet VPN app" class="hero-phone" />
+        </div>
+      </div>
+
+      <!-- METRICS -->
+      <div class="metrics">
+        <div class="metrics-inner">
+          <div>
+            <div class="metric-num">2-in-1</div>
+            <div class="metric-lbl">VPN + Remote</div>
+          </div>
+          <div>
+            <div class="metric-num">256-bit</div>
+            <div class="metric-lbl">Encryption</div>
+          </div>
+          <div>
+            <div class="metric-num">Zero</div>
+            <div class="metric-lbl">Logs kept</div>
+          </div>
+          <div>
+            <div class="metric-num">24/7</div>
+            <div class="metric-lbl">Live support</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TWO-IN-ONE -->
+      <div class="twoin">
+        <div class="eyebrow">Two essentials, one app</div>
+        <h2 class="section-h">A VPN, and a remote.<br />Both done well.</h2>
+        <p class="section-sub">
+          Most VPN apps stop at encryption. Velvet pairs world-class privacy
+          with a Smart TV remote you'll actually want to use.
+        </p>
+
+        <div class="duo">
+          <div class="duo-card">
+            <span class="pill">Privacy</span>
+            <h3>Secure, no-logs VPN</h3>
+            <p>
+              Encrypted high-speed servers worldwide. Stable on Wi-Fi, 5G,
+              anywhere. Nothing tracked.
+            </p>
+            <img src="300x650bb__1_.webp" alt="VPN Connected" />
+          </div>
+          <div class="duo-card">
+            <span class="pill">Remote</span>
+            <h3>Universal Smart TV control</h3>
+            <p>
+              Samsung, LG, Sony, and more. Touchpad, buttons, customizable
+              layouts — your remote, refined.
+            </p>
+            <img src="300x650bb__2_.webp" alt="Touchpad remote" />
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="feat-section">
+        <div class="eyebrow">Inside the app</div>
+        <h2 class="section-h">Built to feel effortless.</h2>
+
+        <div class="feat-grid">
+          <div class="feat">
+            <div class="feat-label">01 — Encryption</div>
+            <h4>Military-grade protection</h4>
+            <p>
+              Every packet encrypted before it leaves your device. Hackers,
+              trackers, and prying eyes all locked out.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-label">02 — Servers</div>
+            <h4>Worldwide high-speed network</h4>
+            <p>
+              Fast, stable connections across countries. Stream, browse, work —
+              without the spinning wheel.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-label">03 — Remote</div>
+            <h4>Works with every major TV</h4>
+            <p>
+              Compatible with Samsung, LG, Sony, and other Smart TV brands. Set
+              up takes under a minute.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-label">04 — Layout</div>
+            <h4>Customize your remote</h4>
+            <p>
+              Touchpad, full button grid, or your own layout. Whatever feels
+              right in your hand.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-label">05 — Privacy</div>
+            <h4>Strict no-logs policy</h4>
+            <p>
+              What you do online stays yours. We don't track, sell, or share
+              anything.
+            </p>
+          </div>
+          <div class="feat">
+            <div class="feat-label">06 — Support</div>
+            <h4>Real humans, 24/7</h4>
+            <p>
+              Live chat with our team any time — no bots, no canned scripts.
+              Just quick answers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUOTE -->
+      <div class="quote">
+        <div class="quote-block">
+          <p>
+            "Finally a VPN app that earns its space on my home screen. The TV
+            remote is the bonus — but it might be the reason I keep it."
+          </p>
+          <p class="quote-author">— App Store review · ★★★★★</p>
+        </div>
+      </div>
+
+      <!-- FINAL CTA -->
+      <div class="final">
+        <h2>Three days <em>free</em>.<br />Cancel anytime.</h2>
+        <p>
+          Weekly, monthly, or yearly plans available after the trial. Manage
+          everything from your iPhone Settings.
+        </p>
+        <a href="http://paychat.fuse-cloud.com/tl?a=356&o=6333&aff_click_id={AFF_CLICK_ID}&sub_affid=2_velvet{SUB_AFFID}&device_id={DEVICE_ID}" class="btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+            />
+          </svg>
+          Download Velvet VPN
+        </a>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="foot">
+        <p>© 2025 Velvet VPN. All rights reserved.</p>
+        <p>
+          <a href="https://tv-remote.atta-dev-llc.com/privacy.html">Privacy</a>·
+          <a href="https://tv-remote.atta-dev-llc.com/terms.html">Terms</a>·
+          <a href="https://tv-remote.atta-dev-llc.com/eula.html">EULA</a>·
+          <a href="https://tv-remote.atta-dev-llc.com/contacts.html">Contact</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

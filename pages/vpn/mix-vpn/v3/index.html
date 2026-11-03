@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Mix VPN — Private, Fast, No-Logs iOS VPN</title>
+    <meta
+      name="description"
+      content="Mix VPN hides your IP, encrypts every connection and keeps zero logs across 150+ servers worldwide. High-speed, one-tap, kill-switch protected. Free 3-day trial on iOS."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --blue-deep: #0747c9;
+        --blue: #0b63f6;
+        --blue-bright: #0a5be0;
+        --sky: #4da3ff;
+        --blue-soft: #f2f7ff;
+        --blue-tint: #e5f0ff;
+        --ink: #0a1b3d;
+        --ink-2: #1e2f52;
+        --muted: #5a6b8c;
+        --line: #e4ecf9;
+        --bg: #ffffff;
+        --green: #16c784;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ── STICKY TOP ── */
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .top-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+      }
+      .logo-text {
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: -0.01em;
+      }
+      .top-btn {
+        background: var(--blue);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 9px 16px;
+        border-radius: 100px;
+      }
+
+      /* ── HERO ── */
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .hero {
+        text-align: center;
+        padding: 52px 0 40px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--blue-tint);
+        color: var(--blue-deep);
+        border-radius: 100px;
+        padding: 7px 15px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        margin-bottom: 22px;
+      }
+      .chip svg {
+        width: 10px;
+        height: 10px;
+        fill: var(--green);
+      }
+      .hero-h {
+        font-size: clamp(32px, 8vw, 52px);
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        margin-bottom: 18px;
+        max-width: 14ch;
+        margin-inline: auto;
+      }
+      .underline {
+        position: relative;
+        white-space: nowrap;
+      }
+      .underline::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0.06em;
+        height: 0.24em;
+        background: linear-gradient(90deg, var(--sky), var(--blue));
+        border-radius: 4px;
+        opacity: 0.55;
+        z-index: -1;
+      }
+      .hero-sub {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 42ch;
+        margin: 0 auto 30px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(160deg, var(--blue), var(--blue-deep));
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 16px 30px;
+        border-radius: 14px;
+        box-shadow: 0 18px 38px -14px rgba(7, 71, 201, 0.6);
+        transition: transform 0.15s;
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+      .btn svg {
+        width: 18px;
+        height: 18px;
+      }
+      .hero-note {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 14px;
+      }
+      .hero-shot {
+        width: 240px;
+        margin: 38px auto 0;
+        border-radius: 26px;
+        box-shadow: 0 30px 60px -24px rgba(7, 71, 201, 0.5);
+      }
+
+      /* ── STAT BAND ── */
+      .stats {
+        background: linear-gradient(160deg, var(--blue), var(--blue-deep));
+        color: #fff;
+        border-radius: 26px;
+        margin: 40px 0 0;
+        padding: 30px 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .stats::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.16) 1px,
+          transparent 1.2px
+        );
+        background-size: 16px 16px;
+        opacity: 0.4;
+      }
+      .stat {
+        position: relative;
+      }
+      .stat b {
+        display: block;
+        font-size: clamp(22px, 6vw, 30px);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .stat span {
+        font-size: 12px;
+        opacity: 0.82;
+        font-weight: 600;
+      }
+
+      /* ── STORY ROWS ── */
+      .story {
+        padding: 68px 0 0;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--blue);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .story-h {
+        font-size: clamp(24px, 5.4vw, 34px);
+        font-weight: 800;
+        letter-spacing: -0.024em;
+        line-height: 1.12;
+        text-align: center;
+        margin-bottom: 44px;
+      }
+      .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        padding: 26px 0;
+        border-top: 1px solid var(--line);
+      }
+      .row:first-of-type {
+        border-top: none;
+      }
+      .row-shot {
+        width: 190px;
+        flex-shrink: 0;
+        border-radius: 22px;
+        box-shadow: 0 20px 44px -22px rgba(7, 71, 201, 0.4);
+      }
+      .row-text {
+        text-align: center;
+        max-width: 420px;
+      }
+      .row-kick {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--blue);
+        background: var(--blue-tint);
+        border-radius: 100px;
+        padding: 6px 12px;
+        margin-bottom: 12px;
+      }
+      .row-text h3 {
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+      }
+      .row-text p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* ── TRUST GRID ── */
+      .trust {
+        padding: 68px 0 0;
+      }
+      .trust-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .trust-card {
+        background: var(--blue-soft);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px 18px;
+      }
+      .trust-card svg {
+        width: 26px;
+        height: 26px;
+        color: var(--blue);
+        margin-bottom: 12px;
+      }
+      .trust-card h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+      .trust-card p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ── REVIEWS ── */
+      .reviews {
+        padding: 68px 0 0;
+      }
+      .review {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px;
+        margin-bottom: 12px;
+        box-shadow: 0 14px 34px -24px rgba(10, 27, 61, 0.2);
+      }
+      .review-stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 10px;
+      }
+      .review-stars svg {
+        width: 14px;
+        height: 14px;
+        fill: #f5b400;
+      }
+      .review p {
+        font-size: 14px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+      .review-author {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .review-author span {
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      /* ── FINAL CTA ── */
+      .final {
+        padding: 68px 0 0;
+      }
+      .final-card {
+        background: linear-gradient(160deg, var(--blue), var(--blue-deep));
+        border-radius: 30px;
+        padding: 52px 28px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .final-card::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(77, 163, 255, 0.3) 0%,
+          transparent 70%
+        );
+      }
+      .final-card > * {
+        position: relative;
+      }
+      .final-card h2 {
+        font-size: clamp(28px, 7vw, 40px);
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.05;
+        margin-bottom: 14px;
+      }
+      .final-card p {
+        font-size: 15px;
+        opacity: 0.88;
+        max-width: 380px;
+        margin: 0 auto 28px;
+      }
+      .btn-light {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: var(--blue-deep);
+        font-size: 15px;
+        font-weight: 700;
+        padding: 15px 28px;
+        border-radius: 14px;
+      }
+      .btn-light svg {
+        width: 18px;
+        height: 18px;
+      }
+      .sub-info {
+        font-size: 12px;
+        opacity: 0.72;
+        margin-top: 20px;
+        max-width: 460px;
+        margin-inline: auto;
+        line-height: 1.6;
+      }
+      .sub-info a {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      /* ── FOOTER ── */
+      .foot {
+        text-align: center;
+        padding: 36px 20px 40px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .foot a {
+        color: var(--muted);
+        text-decoration: underline;
+        margin: 0 6px;
+      }
+      .foot p:first-child {
+        margin-bottom: 8px;
+      }
+
+      /* ── DESKTOP ── */
+      @media (min-width: 768px) {
+        .row {
+          flex-direction: row;
+          justify-content: center;
+          gap: 48px;
+          padding: 40px 0;
+        }
+        .row.reverse {
+          flex-direction: row-reverse;
+        }
+        .row-text {
+          text-align: left;
+        }
+        .trust-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- STICKY TOP -->
+    <div class="top">
+      <div class="top-inner">
+        <div class="brand">
+          <img src="images/app-icon.webp" alt="Mix VPN" class="logo-img" />
+          <span class="logo-text">Mix VPN</span>
+        </div>
+        <a href="#download" class="top-btn">Try Free</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="wrap">
+      <div class="hero">
+        <div class="chip">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" /></svg>
+          Free 3-day trial · iOS
+        </div>
+        <h1 class="hero-h">
+          Go <span class="underline">private</span> without logs or
+          <span class="underline">limits</span>.
+        </h1>
+        <p class="hero-sub">
+          Mix VPN encrypts your connection, hides your IP and keeps strictly
+          zero logs across 150+ high-speed servers — all in one tap.
+        </p>
+        <a
+          href="http://paychat.fuse-cloud.com/tl?a=356&o=6410&aff_click_id={AFF_CLICK_ID}&sub_affid=3_mix{SUB_AFFID}&device_id={DEVICE_ID}"
+          class="btn"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+          Start Free 3-Day Trial
+        </a>
+        <p class="hero-note">No registration · Zero logs · Cancel anytime</p>
+        <img
+          src="images/screen-1.webp"
+          alt="Mix VPN connected screen"
+          class="hero-shot"
+        />
+      </div>
+
+      <!-- STAT BAND -->
+      <div class="stats">
+        <div class="stat"><b>150+</b><span>Global servers</span></div>
+        <div class="stat"><b>0</b><span>Logs kept</span></div>
+        <div class="stat"><b>1-tap</b><span>To connect</span></div>
+      </div>
+
+      <!-- STORY ROWS -->
+      <div class="story">
+        <p class="eyebrow">How it protects you</p>
+        <h2 class="story-h">Privacy that works the moment you open it</h2>
+
+        <div class="row">
+          <img src="images/screen-1.webp" alt="Connected screen" class="row-shot" />
+          <div class="row-text">
+            <span class="row-kick">One-tap connect</span>
+            <h3>Protected in a single tap</h3>
+            <p>
+              No account, no setup. Open Mix VPN, tap once and your traffic is
+              instantly encrypted with a fresh, hidden IP.
+            </p>
+          </div>
+        </div>
+
+        <div class="row reverse">
+          <img src="images/screen-2.webp" alt="Servers worldwide" class="row-shot" />
+          <div class="row-text">
+            <span class="row-kick">150+ servers</span>
+            <h3>Servers across the globe</h3>
+            <p>
+              Jump between 10+ countries or let AI pick the fastest route for
+              you — perfect for streaming, browsing and travel.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <img src="images/screen-3.webp" alt="Safe and anonymous" class="row-shot" />
+          <div class="row-text">
+            <span class="row-kick">Strict no-logs</span>
+            <h3>Safe & anonymous connection</h3>
+            <p>
+              Your history and personal data are never recorded, stored or
+              sold. A kill-switch halts traffic instantly if the tunnel drops.
+            </p>
+          </div>
+        </div>
+
+        <div class="row reverse">
+          <img src="images/screen-4.webp" alt="Stable high speed" class="row-shot" />
+          <div class="row-text">
+            <span class="row-kick">High bandwidth</span>
+            <h3>Stable, high-speed connection</h3>
+            <p>
+              Military-grade encryption with none of the lag — stream in HD and
+              download at full speed on every network.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRUST GRID -->
+      <div class="trust">
+        <p class="eyebrow">Why Mix VPN</p>
+        <h2 class="story-h">Built for real privacy</h2>
+        <div class="trust-grid">
+          <div class="trust-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <h4>No-logs policy</h4>
+            <p>Nothing about what you do online is ever recorded.</p>
+          </div>
+          <div class="trust-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="11" width="16" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+            <h4>IKEv2 encryption</h4>
+            <p>State-of-the-art encryption on every connection.</p>
+          </div>
+          <div class="trust-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+            </svg>
+            <h4>150+ servers</h4>
+            <p>Fast, stable nodes across 10+ countries.</p>
+          </div>
+          <div class="trust-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2 3 14h7l-1 8 11-13h-7z" />
+            </svg>
+            <h4>Kill-switch</h4>
+            <p>Traffic halts instantly if the tunnel ever drops.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="reviews">
+        <p class="eyebrow">From the App Store</p>
+        <h2 class="story-h">Loved by privacy-first users</h2>
+        <div class="review">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          </div>
+          <p>
+            "Fastest VPN I've tried on iOS — no email, no account, just tap and
+            you're on. Speeds barely dropped on a server overseas."
+          </p>
+          <p class="review-author">Daniel R. <span>· Verified user</span></p>
+        </div>
+        <div class="review">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          </div>
+          <p>
+            "Zero-logs and a real kill-switch — I finally trust a VPN on public
+            Wi-Fi. Setup took all of five seconds."
+          </p>
+          <p class="review-author">Priya M. <span>· Verified user</span></p>
+        </div>
+      </div>
+
+      <!-- FINAL CTA -->
+      <div class="final" id="download">
+        <div class="final-card">
+          <h2>Go private<br />right now.</h2>
+          <p>
+            Start your free 3-day trial — weekly, monthly or annual plans, all
+            unlock Mix VPN in full. Cancel anytime before it ends.
+          </p>
+          <a
+            href="http://paychat.fuse-cloud.com/tl?a=356&o=6410&aff_click_id={AFF_CLICK_ID}&sub_affid=3_mix{SUB_AFFID}&device_id={DEVICE_ID}"
+            class="btn-light"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            Start Free 3-Day Trial
+          </a>
+          <p class="sub-info">
+            Your free 3-day trial automatically converts to a paid subscription
+            unless cancelled at least 24 hours before it ends. Payment is
+            charged upon confirmation of purchase. Manage your subscription and
+            auto-renewal in your account settings. By continuing you agree to
+            our
+            <a href="https://guavabravotechnology.com/eula.html" target="_blank" rel="noopener">Terms of Use (EULA)</a>
+            and
+            <a href="https://guavabravotechnology.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <p>© 2026 Mix VPN. All rights reserved.</p>
+      <p>
+        <a href="https://guavabravotechnology.com/privacy.html" target="_blank" rel="noopener">Privacy</a>·
+        <a href="https://guavabravotechnology.com/eula.html" target="_blank" rel="noopener">EULA</a>
+      </p>
+    </div>
+  </body>
+</html>

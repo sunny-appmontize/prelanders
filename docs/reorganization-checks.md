@@ -1,0 +1,39 @@
+# Reorganization checks
+
+- Verified 369 existing files by SHA-256 after relocation; all contents preserved.
+- No newly broken relative HTML/CSS references were introduced.
+- Existing unresolved relative references are listed below; external URLs and domain-root paths were not validated.
+- ZIP files are preserved snapshots; they were not rebuilt.
+
+- `archive/legacy-prelanders/your-medi-example.html` → `agent.jpg`
+- `archive/legacy-prelanders/your-medi-example.html` → `privacy.html`
+- `archive/legacy-prelanders/your-medi-example.html` → `script1.js`
+- `archive/legacy-prelanders/your-medi-example.html` → `style.css`
+- `archive/legacy-prelanders/your-medi-example.html` → `url-tracker7.js`
+- `pages/brand-surveys/boro-plus-nature-survey/index.html` → `+getLocationHref(`
+- `pages/senior-benefits/best-senior-coverage-grocery-card/contact.html` → `[YOUR_FORM_HANDLER_URL]`
+- `pages/senior-benefits/best-senior-coverage-grocery-card/contact.html` → `logo.png`
+- `pages/senior-benefits/best-senior-coverage-grocery-card/privacy.html` → `logo.png`
+- `pages/senior-benefits/best-senior-coverage-grocery-card/term.html` → `logo.png`
+- `pages/senior-benefits/your-medicare-health-allowance/alternate-layout/qualify/index.html` → `favicon-180.png`
+- `pages/senior-benefits/your-medicare-health-allowance/alternate-layout/qualify/index.html` → `favicon-32.png`
+- `pages/senior-benefits/your-medicare-health-allowance/alternate-layout/qualify/index.html` → `privacy.html`
+- `pages/senior-benefits/your-medicare-health-allowance/alternate-layout/qualify/index.html` → `terms.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `agent.jpg`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `privacy.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `script1.js`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `style.css`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `terms.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index.html` → `url-tracker7.js`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `agent.jpg`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `privacy.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `script9.js`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `style.css`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `terms.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index_new.html` → `url-tracker7.js`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `agent.jpg`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `privacy.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `script1.js`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `style.css`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `terms.html`
+- `pages/senior-benefits/your-medicare-health-allowance/index_old.html` → `url-tracker7.js`

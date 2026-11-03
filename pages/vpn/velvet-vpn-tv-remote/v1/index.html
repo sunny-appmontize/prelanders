@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Velvet VPN — Privacy & TV Remote in One App</title>
+    <meta
+      name="description"
+      content="A secure VPN and a universal Smart TV remote — all in one iOS app. Try free for 3 days."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --purple-deep: #4c1d95;
+        --purple: #6d28d9;
+        --purple-bright: #7c3aed;
+        --purple-soft: #f5f3ff;
+        --purple-tint: #ede9fe;
+        --ink: #0f0a1e;
+        --ink-2: #2d2447;
+        --muted: #6b6885;
+        --line: #eceaf3;
+        --bg: #fafafb;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ── TOP NAV (just logo) ── */
+      .topbar {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+      }
+      .logo-text {
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── HERO CARD ── */
+      .hero-wrap {
+        padding: 8px 16px 0;
+      }
+
+      .hero {
+        max-width: 960px;
+        margin: 0 auto;
+        background: linear-gradient(160deg, #6d28d9 0%, #4c1d95 100%);
+        border-radius: 28px;
+        padding: 44px 28px 0;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .tag::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        box-shadow: 0 0 8px #4ade80;
+      }
+
+      .hero h1 {
+        font-size: clamp(30px, 7vw, 44px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        margin-bottom: 14px;
+      }
+
+      .hero h1 em {
+        font-style: normal;
+        background: linear-gradient(120deg, #fbbf24, #f472b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 16px;
+        opacity: 0.85;
+        line-height: 1.6;
+        margin-bottom: 28px;
+        max-width: 360px;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        color: var(--purple-deep);
+        font-size: 16px;
+        font-weight: 700;
+        padding: 15px 26px;
+        border-radius: 14px;
+        transition: transform 0.15s;
+      }
+
+      .hero-cta:active {
+        transform: scale(0.98);
+      }
+      .hero-cta svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .hero-note {
+        font-size: 13px;
+        opacity: 0.7;
+        margin-top: 12px;
+        margin-bottom: 36px;
+      }
+
+      .hero-phone {
+        width: 220px;
+        margin: 0 auto;
+        margin-bottom: -1px;
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+      }
+
+      /* ── DUAL POWER (the unique angle) ── */
+      .dual {
+        max-width: 960px;
+        margin: 56px auto 0;
+        padding: 0 16px;
+      }
+
+      .dual-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .dual-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .dual-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: var(--purple-tint);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .dual-icon svg {
+        width: 24px;
+        height: 24px;
+        color: var(--purple);
+      }
+
+      .dual-card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 4px;
+      }
+
+      .dual-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* ── SECTION HEADERS ── */
+      .section {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 64px 20px 0;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--purple);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .section-h {
+        font-size: clamp(24px, 5vw, 34px);
+        font-weight: 800;
+        letter-spacing: -0.022em;
+        line-height: 1.15;
+        margin-bottom: 32px;
+      }
+
+      /* ── FEATURE LIST ── */
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .feature {
+        display: flex;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .feature:last-child {
+        border-bottom: none;
+      }
+
+      .feat-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--purple);
+        flex-shrink: 0;
+        width: 24px;
+        letter-spacing: 0.04em;
+      }
+
+      .feature h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+
+      .feature p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      /* ── PHONE SHOWCASE ── */
+      .showcase {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 64px 20px 0;
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .shot-card {
+        background: var(--purple-tint);
+        border-radius: 22px;
+        padding: 28px 20px 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .shot-card-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--purple);
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .shot-card-title {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+
+      .shot-card img {
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        border-radius: 18px 18px 0 0;
+        box-shadow: 0 12px 30px rgba(76, 29, 149, 0.18);
+      }
+
+      /* ── REVIEWS ── */
+      .reviews-strip {
+        max-width: 960px;
+        margin: 64px auto 0;
+        padding: 0 20px;
+      }
+
+      .review {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px;
+        margin-bottom: 12px;
+      }
+
+      .stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 10px;
+      }
+      .stars svg {
+        width: 14px;
+        height: 14px;
+        fill: #f59e0b;
+      }
+
+      .review p {
+        font-size: 14px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+
+      .review-author {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .review-author span {
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      /* ── FINAL CTA ── */
+      .final {
+        max-width: 960px;
+        margin: 64px auto 0;
+        padding: 0 16px 40px;
+      }
+
+      .final-card {
+        background: linear-gradient(160deg, #6d28d9 0%, #4c1d95 100%);
+        border-radius: 28px;
+        padding: 48px 28px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-card::before {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(244, 114, 182, 0.18) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .final-card > * {
+        position: relative;
+      }
+
+      .final-card h2 {
+        font-size: clamp(24px, 6vw, 32px);
+        font-weight: 800;
+        letter-spacing: -0.022em;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+
+      .final-card p {
+        font-size: 15px;
+        opacity: 0.85;
+        margin-bottom: 26px;
+        line-height: 1.55;
+      }
+
+      /* ── FOOTER ── */
+      .foot {
+        text-align: center;
+        padding: 28px 20px 40px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .foot a {
+        color: var(--muted);
+        text-decoration: underline;
+        margin: 0 6px;
+      }
+
+      .foot p:first-child {
+        margin-bottom: 10px;
+      }
+
+      /* ── DESKTOP ── */
+      @media (min-width: 768px) {
+        .hero {
+          padding: 64px 56px 0;
+          display: flex;
+          gap: 40px;
+          align-items: center;
+        }
+        .hero-left {
+          flex: 1;
+        }
+        .hero-phone {
+          width: 240px;
+          margin-bottom: -1px;
+        }
+        .hero p {
+          font-size: 17px;
+        }
+
+        .dual-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .features {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0 48px;
+        }
+
+        .feature {
+          padding: 24px 0;
+        }
+
+        .showcase-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP -->
+    <div class="topbar">
+      <img src="logo.webp" alt="Velvet VPN" class="logo-img" />
+      <span class="logo-text">Velvet VPN</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-wrap">
+      <div class="hero">
+        <div class="hero-left">
+          <div class="tag">Free 3-day trial · iOS</div>
+          <h1>Privacy, speed, and your <em>TV remote</em> — all in one.</h1>
+          <p>
+            Velvet VPN protects your connection with secure encryption while
+            doubling as a universal Smart TV remote. Two essentials, one app.
+          </p>
+          <a href="http://paychat.fuse-cloud.com/tl?a=356&o=6333&aff_click_id={AFF_CLICK_ID}&sub_affid=1_velvet{SUB_AFFID}&device_id={DEVICE_ID}" class="hero-cta">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+              />
+            </svg>
+            Get Velvet VPN Free
+          </a>
+          <p class="hero-note">No credit card · Cancel anytime</p>
+        </div>
+        <img
+          src="300x650bb__1_.webp"
+          alt="Velvet VPN connected"
+          class="hero-phone"
+        />
+      </div>
+    </div>
+
+    <!-- DUAL POWER CARDS -->
+    <div class="dual">
+      <div class="dual-grid">
+        <div class="dual-card">
+          <div class="dual-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div>
+            <h3>Secure VPN</h3>
+            <p>Encrypted, no-logs connection on every network.</p>
+          </div>
+        </div>
+        <div class="dual-card">
+          <div class="dual-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <polyline points="17 2 12 7 7 2" />
+            </svg>
+          </div>
+          <div>
+            <h3>Smart TV Remote</h3>
+            <p>Control Samsung, LG, Sony &amp; more from your phone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES NUMBERED LIST -->
+    <div class="section">
+      <p class="eyebrow">What's inside</p>
+      <h2 class="section-h">Everything you need.<br />Nothing you don't.</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feat-num">01</div>
+          <div>
+            <h4>High-speed servers worldwide</h4>
+            <p>
+              Connect to fast, stable servers across multiple countries with
+              zero lag.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">02</div>
+          <div>
+            <h4>Strong data encryption</h4>
+            <p>
+              Your activity is fully encrypted and protected from hackers and
+              trackers.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">03</div>
+          <div>
+            <h4>Strict no-logs policy</h4>
+            <p>
+              We don't store or share anything about what you do online. Ever.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">04</div>
+          <div>
+            <h4>Universal TV remote</h4>
+            <p>Works with Samsung, LG, Sony and other major Smart TV brands.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">05</div>
+          <div>
+            <h4>Customizable touchpad</h4>
+            <p>Fully customizable remote layouts and gesture controls.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feat-num">06</div>
+          <div>
+            <h4>24/7 live chat support</h4>
+            <p>A real person, ready to help whenever you need it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE SHOWCASE -->
+    <div class="showcase">
+      <p class="eyebrow">See the app</p>
+      <h2 class="section-h">Designed for one-tap simplicity</h2>
+      <div class="showcase-grid">
+        <div class="shot-card">
+          <div class="shot-card-label">VPN</div>
+          <div class="shot-card-title">Connect in one tap</div>
+          <img src="300x650bb__1_.webp" alt="Connected" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Servers</div>
+          <div class="shot-card-title">Pick your country</div>
+          <img src="300x650bb__2_.webp" alt="Servers" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Remote</div>
+          <div class="shot-card-title">Touchpad control</div>
+          <img src="300x650bb__3_.webp" alt="Touchpad" />
+        </div>
+        <div class="shot-card">
+          <div class="shot-card-label">Remote</div>
+          <div class="shot-card-title">Full button layout</div>
+          <img src="300x650bb.webp" alt="Remote buttons" />
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="reviews-strip">
+      <p class="eyebrow">From the App Store</p>
+      <h2 class="section-h">People love that it's two apps in one</h2>
+      <div class="review">
+        <div class="stars">
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+        </div>
+        <p>
+          "Lost my Samsung remote and Velvet became my go-to. The VPN actually
+          works really well too — fast, no buffering on streams."
+        </p>
+        <p class="review-author">Daniel R. <span>· Verified user</span></p>
+      </div>
+      <div class="review">
+        <div class="stars">
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+          <svg viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            />
+          </svg>
+        </div>
+        <p>
+          "I needed a VPN, ended up keeping it for the TV remote. The touchpad
+          gesture is way better than fumbling with the actual remote."
+        </p>
+        <p class="review-author">Priya M. <span>· Verified user</span></p>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="final">
+      <div class="final-card">
+        <h2>3 days free.<br />Cancel anytime.</h2>
+        <p>
+          Weekly, monthly, or yearly plans — all unlock VPN + TV Remote in full.
+        </p>
+        <a href="http://paychat.fuse-cloud.com/tl?a=356&o=6333&aff_click_id={AFF_CLICK_ID}&sub_affid=1_velvet{SUB_AFFID}&device_id={DEVICE_ID}" class="hero-cta">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+            />
+          </svg>
+          Start Free Trial
+        </a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <p>© 2025 Velvet VPN. All rights reserved.</p>
+      <p>
+        <a href="https://tv-remote.atta-dev-llc.com/privacy.html">Privacy</a>·
+        <a href="https://tv-remote.atta-dev-llc.com/terms.html">Terms</a>·
+        <a href="https://tv-remote.atta-dev-llc.com/eula.html">EULA</a>·
+        <a href="https://tv-remote.atta-dev-llc.com/contacts.html">Contact</a>
+      </p>
+    </div>
+  </body>
+</html>

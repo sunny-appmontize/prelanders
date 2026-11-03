@@ -5,6 +5,7 @@
 .aws/
 .codex/
 .agents/
+.claude/
 *.pem
 *.key
 
